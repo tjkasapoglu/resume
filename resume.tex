@@ -1,147 +1,202 @@
-\documentclass[11pt,letterpaper]{article}
-\usepackage[letterpaper,margin=0.5in]{geometry}
+% a mashup of hipstercv, friggeri and twenty cv
+% https://www.latextemplates.com/template/twenty-seconds-resumecv
+% https://www.latextemplates.com/template/friggeri-resume-cv
+
+\documentclass[lighthipster]{simplehipstercv}
+% available options are: darkhipster, lighthipster, pastel, allblack, grey, verylight, withoutsidebar
+% withoutsidebar
 \usepackage[utf8]{inputenc}
-\usepackage{mdwlist}
-\usepackage[default]{lato}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage{fontawesome}
-\usepackage{enumitem}
-\DeclareFontFamily{U}{fontawesomeOne}{}
-\DeclareFontShape{U}{fontawesomeOne}{m}{n}
-{<-> FontAwesome--fontawesomeone}{}
-\DeclareRobustCommand\FAone{\fontencoding{U}\fontfamily{fontawesomeOne}\selectfont}
+\usepackage[default]{raleway}
+\usepackage[margin=1cm, a4paper]{geometry}
+
+
+%------------------------------------------------------------------ Variablen
+
+\newlength{\rightcolwidth}
+\newlength{\leftcolwidth}
+\setlength{\leftcolwidth}{0.23\textwidth}
+\setlength{\rightcolwidth}{0.75\textwidth}
+
+%------------------------------------------------------------------
+\title{New Simple CV}
+\author{\LaTeX{} Ninja}
+\date{June 2019}
+
 \pagestyle{empty}
-\setlength{\tabcolsep}{0em}
-
-% indentsection style, used for sections that aren't already in lists
-% that need indentation to the level of all text in the document
-\newenvironment{indentsection}[1]%
-{\begin{list}{}%
-{\setlength{\leftmargin}{#1}}%
-     \item[]
-}
-{\end{list}}
-
-% opposite of above; bump a section back toward the left margin
-\newenvironment{unindentsection}[1]%
-{\begin{list}{}%
-{\setlength{\leftmargin}{-0.5#1}}%
-\item[]%
-}
-{\end{list}}
-
-% format two pieces of text, one left aligned and one right aligned
-\newcommand{\headerrow}[2]
-{\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
-#1 &
-#2 \\
-\end{tabular*}}
-
-% make "C++" look pretty when used in text by touching up the plus signs
-\newcommand{\CPP}
-{C\nolinebreak[4]\hspace{-.05em}\raisebox{.22ex}{\footnotesize\bf ++}}
-
-% and the actual content starts here
 \begin{document}
 
+
+\thispagestyle{empty}
+%-------------------------------------------------------------
+
+\section*{Start}
+
+\simpleheader{headercolour}{Jack}{Sparrow}{Captain}{white}
+
+
+
+%------------------------------------------------
+
+% this has to be here so the paracols starts..
+\subsection*{}
+\vspace{4em}
+
+\setlength{\columnsep}{1.5cm}
+\columnratio{0.23}[0.75]
+\begin{paracol}{2}
+\hbadness5000
+%\backgroundcolor{c[1]}[rgb]{1,1,0.8} % cream yellow for column-1 %\backgroundcolor{g}[rgb]{0.8,1,1} % \backgroundcolor{l}[rgb]{0,0,0.7} % dark blue for left margin
+
+\paracolbackgroundoptions
+
+% 0.9,0.9,0.9 -- 0.8,0.8,0.8
+
+
+\footnotesize
+{\setasidefontcolour
+\flushright
 \begin{center}
-	{\LARGE \textbf{Daniel Phang}}\\
-	Seattle, Washington
-	\vspace{0.05cm}
-	\\
-	\raisebox{-0.2\height} {\Large \faPhoneSquare} \ \  (000) 000-0000 \hfill\raisebox{-0.2\height}{\Large \faEnvelopeSquare} \ \ example@example.com \hfill \raisebox{-0.2\height}{\Large \faGithubSquare} \ \ github.com/example-profile \hfill \raisebox{-0.2\height}{\Large \faLinkedinSquare} \ \ linkedin.com/in/example
+    \roundpic{jack.jpg}
 \end{center}
 
-\hrule
-\vspace{-1em}
-\subsection*{\Large Experience}
+\bg{cvgreen}{white}{About me}\\[0.5em]
 
-\renewcommand\labelitemi{}
-\renewcommand\labelitemii{$\bullet$}
-\begin{itemize}[leftmargin=1em]
-	\parskip=0.1em
-		
-		
-	\item
-	      \headerrow
-	      {\textbf{Microsoft}}
-	      {\textbf{Redmond, WA}}
-	      \headerrow
-	      {\emph{Software Engineer II}}
-	      {\emph{April 2019 -- Present}}
-	      \begin{itemize*}
-	      	\item Analyzed performance data and optimized legacy backend code for SharePoint Classic Publishing sites, improving query caching and CPU-heavy operations such as HTML rewriting.
-	      	\item Designed and implemented quality-of-service dashboards and performance frameworks to dynamically detect performance issues across 400+ top companies.
-	      	\item Improved data processing scripts that analyze daily site performance data for 1000+ companies, performance incidents, and engineering system health.
-	      \end{itemize*}
-	      	      
-	\item
-	      \headerrow
-	      {\textbf{Amazon.com}}
-	      {\textbf{Seattle, WA}}
-	      \headerrow
-	      {\emph{Software Development Engineer II}}
-	      {\emph{October 2016 -- January 2019}}
-	      \begin{itemize*}
-	      	\item Designed and implemented ordering and accounting workflows to launch Prime Wardrobe US/UK/JP, a try-before-you-buy program for clothing, jewelry, and shoes.
-	      	\item Reduced the US Prime Wardrobe non-payment rate significantly by implementing additional validations based on customer behavior patterns.
-	      	\item Optimized Prime Wardrobe's Redshift cluster by intelligently distributing workloads, reducing peak CPU usage from 95\% to 50\% and peak disk usage from 90\% to 60\%.
-	      	\item Migrated Prime Wardrobe's accounting backend to a next-generation plugin-based service, allowing for easy future integration with other retail programs.
-	      \end{itemize*}
-	      \headerrow
-	      {\emph{Software Development Engineer I}}
-	      {\emph{June 2014 -- October 2016}}
-	      \begin{itemize*}
-	      	\item Implemented critical detail page and globalized item publishing features to help launch the \emph{Rest of World} project, which enabled customers from 200+ countries to purchase digital software and video games.
-	      	\item Designed and implemented an automated accounting solution for the Digital Software \& Video Games business, reducing the work required in monthly accounting close from 10+ hours to 2 hours.
-	      	\item Created an internal Django website for vendor managers to manage pricing, blacklisting, and inventory for software and video games, reducing monthly operational time spent from 20+ hours to 10 hours.
-	      \end{itemize*}
-	      	      
-	\item
-	      \headerrow
-	      {\textbf{Crunchyroll}}
-	      {\textbf{San Francisco, CA}}
-	      \headerrow
-	      {\emph{Engineering Intern}}
-	      {\emph{June 2013 -- August 2013}}
-	      \begin{itemize*}
-	      	\item Developed a new version of Crunchyroll’s application for the Roku platform.
-	      	\item Worked with a designer to revamp the application’s user interface, improved HD video playback, and implemented a multilingual translations framework.
-	      \end{itemize*}
-	      	      
-\end{itemize}
+{\footnotesize
+\lorem\lorem\lorem}
+\bigskip
 
-\hrule
-\vspace{-1em}
-\subsection*{\Large Skills}
+\bg{cvgreen}{white}{personal} \\[0.5em]
+Jack Sparrow
 
-\hyphenpenalty=1000
-\begin{itemize}[leftmargin=1em,noitemsep]
-	\item \textbf{Languages:}
-	      C\#, HTML/CSS, Java, JavaScript, \LaTeX, Python, SQL
-	\item \textbf{Software:}
-	      Atlassian (Bitbucket, Jira, Confluence), AWS (DynamoDB, EC2, Lambda, RDS, Redshift, S3, SQS), Microsoft (Azure DevOps, Visual Studio), DigitalOcean, Django, Heroku, IntelliJ IDEA, Selenium
-\end{itemize}
+nationality: English 
 
-\hrule
-\vspace{-1em}
-\subsection*{\Large Education}
+1690
 
-\begin{itemize}[leftmargin=1em]
-	\parskip=0.1em
-		
-	\item
-	      \headerrow
-	      {\textbf{Lehigh University}}
-	      {\textbf{Bethlehem, PA}}
-	      \headerrow
-	      {\emph{M.S. Computer Science} (\textbf{GPA:} 3.96/4.00)}
-	      {\emph{August 2013 -- May 2014}}
-	      \headerrow
-	      {\emph{B.S. Computer Engineering (Minor in Economics)} (\textbf{GPA:} 3.77/4.00)}
-	      {\emph{August 2009 -- May 2013}}
-	      	      
-\end{itemize}
+\bigskip
+
+\bg{cvgreen}{white}{Areas of specialization} \\[0.5em]
+
+Privateering ~•~ Bucaneering ~•~ Parler ~•~ Rum
+
+\bigskip
+
+
+
+\bigskip
+
+\bg{cvgreen}{white}{Interests}\\[0.5em]
+
+\lorem
+\bigskip
+
+\bg{cvgreen}{white}{Interests}\\[0.5em]
+
+\texttt{R} ~/~ \texttt{Android} ~/~ \texttt{Linux}
+
+\texttt{R} ~/~ \texttt{Android} ~/~ \texttt{Linux}
+
+\texttt{R} ~/~ \texttt{Android} ~/~ \texttt{Linux}
+
+\vspace{4em}
+
+\infobubble{\faAt}{cvgreen}{white}{jack@sparrow.org}
+\infobubble{\faTwitter}{cvgreen}{white}{@sparrow}
+\infobubble{\faFacebook}{cvgreen}{white}{Jack Sparrow}
+\infobubble{\faGithub}{cvgreen}{white}{sparrow}
+
+\phantom{turn the page}
+
+\phantom{turn the page}
+}
+%-----------------------------------------------------------
+\switchcolumn
+
+\small
+\section*{Short Resumé}
+
+\begin{tabular}{r| p{0.5\textwidth} c}
+    \cvevent{2018--2021}{Captain of the Black Pearl}{Lead}{East Indies \color{cvred}}{Finally got the goddamn ship back.\lorem\lorem\lorem}{disney.png} \\
+    \cvevent{2016--2017}{Captain of the Black Pearl}{Lead}{Tortuga \color{cvred}}{Found a secret treasure, lost the ship. \lorem\lorem}{medal.jpeg}
+\end{tabular}
+\vspace{3em}
+
+\begin{minipage}[t]{0.35\textwidth}
+\section*{Degrees}
+\begin{tabular}{r p{0.6\textwidth} c}
+    \cvdegree{1710}{Captain}{Certified}{Tortuga Uni \color{headerblue}}{}{disney.png} \\
+    \cvdegree{1715}{Bucaneering}{M.A.}{London \color{headerblue}}{}{medal.jpeg} \\
+    \cvdegree{1720}{Bucaneering}{B.A.}{London \color{headerblue}}{}{medal.jpeg}
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.3\textwidth}
+\section*{Programming}
+\begin{tabular}{r @{\hspace{0.5em}}l}
+     \bg{skilllabelcolour}{iconcolour}{html, css} &  \barrule{0.4}{0.5em}{cvpurple}\\
+     \bg{skilllabelcolour}{iconcolour}{\LaTeX} & \barrule{0.55}{0.5em}{cvgreen} \\
+     \bg{skilllabelcolour}{iconcolour}{python} & \barrule{0.5}{0.5em}{cvpurple} \\
+     \bg{skilllabelcolour}{iconcolour}{R} & \barrule{0.25}{0.5em}{cvpurple} \\
+     \bg{skilllabelcolour}{iconcolour}{javascript} & \barrule{0.1}{0.5em}{cvpurple} \\
+\end{tabular}
+\end{minipage}
+
+\section*{Curriculum}
+\begin{tabular}{r| p{0.5\textwidth} c}
+    \cvevent{2018--2021}{Captain of the Black Pearl}{Lead}{East Indies \color{cvred}}{Finally got the goddamn ship back. \lorem}{disney.png} \\
+    \cvevent{2019}{Freelance Pirate}{Bucaneering}{Tortuga \color{cvred}}{This and that. The usual, aye?  \lorem}{medal.jpeg} \\
+\end{tabular}
+\vspace{3em}
+
+\begin{minipage}[t]{0.3\textwidth}
+\section*{Certificates \& Grants}
+\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.55\textwidth}}
+    1708 & Captain's Certificates \\
+    1710 & Travel grant \\
+    1715--1716 & Grant from the Pirate's Company
+\end{tabular}
+\bigskip
+
+\section*{Languages}
+\begin{tabular}{l | ll}
+\textbf{English} & C2 & {\phantom{x}\footnotesize mother tongue} \\
+\textbf{French} & C2 & \pictofraction{\faCircle}{cvgreen}{3}{black!30}{1}{\tiny} \\
+\textbf{Spanish} & C2 & \pictofraction{\faCircle}{cvgreen}{1}{black!30}{3}{\tiny} \\
+\textbf{Italian} & C2 & \pictofraction{\faCircle}{cvgreen}{3}{black!30}{1}{\tiny}
+\end{tabular}
+\bigskip
+
+\end{minipage}\hfill
+\begin{minipage}[t]{0.3\textwidth}
+\section*{Publications}
+\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.7\textwidth}}
+    1729 & \emph{How I almost got killed by Lady Swan}, Tortuga Printing Press. \\
+    1720 & ``Privateering for Beginners'', in: \emph{The Pragmatic Pirate} (1/1720).
+\end{tabular}
+\bigskip
+
+\section*{Talks}
+\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.6\textwidth}}
+    Nov. 1726 & ``How I lost my ship (\& and how to get it back)'', at: \emph{Annual Pirate's Conference} in Tortuga, Nov. 1726.
+\end{tabular}
+\end{minipage}
+
+
+
+
+
+
+\vfill{} % Whitespace before final footer
+
+%----------------------------------------------------------------------------------------
+%	FINAL FOOTER
+%----------------------------------------------------------------------------------------
+\setlength{\parindent}{0pt}
+\begin{minipage}[t]{\rightcolwidth}
+\begin{center}\fontfamily{\sfdefault}\selectfont \color{black!70}
+{\small Jack Sparrow \icon{\faEnvelopeO}{cvgreen}{} The Black Pearl \icon{\faMapMarker}{cvgreen}{} Tortuga \icon{\faPhone}{cvgreen}{} 0099/333 5647380 \newline\icon{\faAt}{cvgreen}{} \protect\url{jack@sparrow.com}
+}
+\end{center}
+\end{minipage}
+
+\end{paracol}
 
 \end{document}
